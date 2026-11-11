@@ -1,5 +1,6 @@
 #include<iostream>
 #include<vector>
+#pragma once "main.h"
 
 
 class acao {
