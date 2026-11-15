@@ -1,9 +1,11 @@
 #include<iostream>
 #include<vector>
-#pragma once "main.h"
+#include"Terminal.h"
+
+#pragma once 
 
 
-class acao {
+class acao : public TerminalUI {
     public:
     float x;
 
@@ -14,7 +16,7 @@ class acao {
     void acao_RU(){ 
     }
     void acao_HH(){ 
-        std::cout << "10 reais na marques" << std::endl;
+        std::cout << this->red << this->negri << this ->subli << this->bk_white << "10 reais na marques"  << this->reset << std::endl;
     }
 };
 
