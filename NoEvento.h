@@ -18,7 +18,7 @@ class NoEvento{
         std::string descricao;
         std::vector<Opcao> opcoes;
 
-        NoEvento(const NoEvento&);
+        NoEvento(const NoEvento&);// aplicação da regra dos 3
         NoEvento& operator=(const NoEvento&);
         void executarEasterEgg(jogador& j) const;
     public:

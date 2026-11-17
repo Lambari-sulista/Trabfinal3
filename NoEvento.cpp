@@ -4,6 +4,7 @@
 #include <iostream>
 #include <limits>
 
+// regra de 3 aplicado ao NoEvento para evitar cópia e atribuição não intencional
 NoEvento::NoEvento(std::string tit, std::string desc) : titulo(tit), descricao(desc) {}
 NoEvento::~NoEvento() = default;
 NoEvento::NoEvento(const NoEvento& outro) : titulo(outro.titulo), descricao(outro.descricao), opcoes(outro.opcoes) {}
@@ -15,7 +16,7 @@ NoEvento& NoEvento::operator=(const NoEvento& outro) {
     }
     return *this;
 }
-// Inclui textoResultado para alimentar o feedback visual (atualize a assinatura no NoEvento.h também)
+
 void NoEvento::addOpcao(std::string texto, std::string resultado, impacto imp, NoEvento* destino) {
     opcoes.push_back({texto, resultado, imp, destino});
 }

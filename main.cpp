@@ -40,48 +40,48 @@ int main() {
     );
 
     auto* no4_Listas = new NoDecisao(
-        "SEMANA 3 - A REALIDADE BATEU",
+        "SEMANA 2 - A REALIDADE BATEU",
         "A semana de integracao acabou e a ficha finalmente caiu.\n"
         "O professor de Calculo postou uma lista de 40 exercicios de limites e o de Programacao liberou os primeiros trabalhos praticos."
     );
 
     auto* no5_Equipe = new NoDecisao(
-        "SEMANA 6 - EQUIPES DE COMPETICAO",
+        "SEMANA 3 - EQUIPES DE COMPETICAO",
         "Hoje e o inicio da semana de processo seletivo das equipes de competicao da universidade.\n"
         "Voce tem a opcao de participar de uma das equipes, mas precisa decidir se vai se dedicar aos estudos ou se envolver com a competicao."
     );
 
     auto* no_Monitoria = new NoDecisao(
-        "SEMANA 7 - CONSULTA COM O MONITOR",
+        "SEMANA 4 - CONSULTA COM O MONITOR",
         "Voce travou nos limites trigonometricos e na regra da cadeia.\n"
         "O horario de monitoria de Calculo 1 comeca agora, bem na janela do almoco."
     );
 
     auto* no_P1Calculo = new NoDecisao(
-        "SEMANA 8 - A PRIMEIRA PROVA DE CALCULO 1 (P1)",
+        "SEMANA 5 - A PRIMEIRA PROVA DE CALCULO 1 (P1)",
         "Amanha ja e o dia da temida P1! A sala esta em silencio absoluto, a prova tera questoes discursivas\n"
         "de limites e derivadas"
     );
 
     auto* no_Feriado = new NoDecisao(
-        "SEMANA 9 - FERIADAO PROLONGADO",
+        "SEMANA 6 - FERIADAO PROLONGADO",
         "Emendou quinta e sexta! Sao quatro dias seguidos sem aula no meio do semestre.\n"
         "Como voce vai aproveitar essa pausa?"
     );
 
     auto* no6_DiaLivre = new NoDecisao(
-        "SEMANA 11 - UM RARO DIA LIVRE",
+        "SEMANA 7 - UM RARO DIA LIVRE",
         "Voce finalmente tem um dia livre hoje no meio do semestre. O que pretende fazer?"
     );
 
     auto* no67_PrazoFinal = new NoDecisao(
-        "SEMANA 13 - ENTREGA AS 23:59",
+        "SEMANA 8 - ENTREGA AS 23:59",
         "Voce se esqueceu completamente de um trabalho de Programacao que vale 20% da nota final.\n"
         "Prazo de entrega ate hoje as 23:59!"
     );
 
     auto* no_P2Calculo = new NoDecisao(
-        "SEMANA 15 - A P2 DE CALCULO 1",
+        "SEMANA 9 - A P2 DE CALCULO 1",
         "Reta final do semestre! A P2 de amanha cobra tecnicas de integracao e calculo de areas,\n"
         "e metade da turma esta fazendo contas de quanto precisa para fugir da REC."
     );
@@ -167,7 +167,7 @@ int main() {
     no3_Calourada->addOpcao(
         "Estudar sozinho",
         "Voce revisou funcoes e trigonometria em silencio no quarto. Comecou o semestre com a base solida.",
-        {-15, +1.5f},
+        {-15, +3.5f},
         no4_Listas
     );
     no3_Calourada->addOpcao(
@@ -403,7 +403,7 @@ int main() {
     noRand3_Git->addOpcao(
         "Reescrever a parte perdida com calma",
         "Deu trabalho, mas o codigo ficou ainda mais limpo e bem documentado que antes.",
-        {-15, +10.0f},
+        {-15, +2.0f},
         no67_PrazoFinal
     );
     noRand3_Git->addOpcao(
@@ -423,7 +423,7 @@ int main() {
     no67_PrazoFinal->addOpcao(
         "E la vamos nos... (fazer o possivel ate dar o horario e ir dormir)",
         "Voce entregou o projeto completo a custo da sua energia.",
-        {-10, +10.0f},
+        {-10, +2.0f},
         no_P2Calculo 
     );
 
@@ -431,13 +431,13 @@ int main() {
     no_P2Calculo->addOpcao(
         "Virar a noite fazendo integrais a base de cafe",
         "Voce chegou sabendo resolver qualquer substituicao trigonometrica, mas quase dormindo na carteira.",
-        {-30, +10.5f},
+        {-30, +3.5f},
         noFinal_Boletim
     );
     no_P2Calculo->addOpcao(
         "Estudar questoes de maior dificuldade e gerenciar o tempo para nao se desgastar",
         "Voce manteve a cabeca fria e garantiu uma otima pontuacao sem se destruir.",
-        {-15, +20.0f},
+        {-15, +4.0f},
         noFinal_Boletim
     );
     no_P2Calculo->addOpcao(
@@ -495,4 +495,4 @@ int main() {
    
     return 0;
     
-}
+}  

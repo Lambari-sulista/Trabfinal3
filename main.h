@@ -5,7 +5,7 @@
 #include <iomanip>
 #include "Terminal.h"
 
-//historico acoes
+//Template genérico para registrar as historias e escolhas do usuario
 template <typename T>
 class historico {
 private:
@@ -22,7 +22,7 @@ public:
         return registros.size();
     }
 };
-//jogador com energia, conhecimento e historico de decisoes
+//classe jogador na qual definimos o nome, energia e conhecimento do jogador, alem de um historico de escolhas
 class jogador {
 private:
     std::string nome;
@@ -96,13 +96,13 @@ public:
         TerminalUI::imprimirRGB("gabaritou Calculo e Programacao por telepatia e zerou o semestre!\n");
     }
 };
-
+// Função auxiliar para limitar valores dentro de um intervalo
 inline classificacao* classificacao::avaliarcaoJ(const jogador& j) {
-    float score = (j.getNota() * 5.0f);
+    
 
-    if (j.getEnergia() <= 0 || j.getNota() < 10.0f) {
+    if (j.getEnergia() <= 0 || j.getNota() < 12.0f) {
         return new PerfilJubilo();
-    } else if (score >= 80.0f && j.getNota() >= 30.0f) {
+    } else if (j.getNota() >= 18.0f) {
         return new PerfilExemplar();
     } else {
         return new PerfilSobrevivente();
