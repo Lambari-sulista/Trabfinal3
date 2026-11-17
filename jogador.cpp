@@ -1,42 +1,38 @@
 #include "main.h"
 #include "Terminal.h"
 
-
-jogador:: jogador(std::string nome) : nome(nome), energia(100), nota(0.0){}
+jogador::jogador() : nome("Calouro"), energia(100), conhecimento(0.0) {}
+jogador:: jogador(std::string nome) : nome(nome), energia(100), conhecimento(0.0){}
 // costrutor parametrizado
 
 void jogador::registroDecisao(const std::string& decisoes){
     Decisoes.adicionar(decisoes);
 }// função para adicionar ao historico de decisão
 
-void jogador::ajusteNota(float delta) {
-    nota += delta;
-    if (nota > 10.0f) nota = 10.0f;
-    if (nota < 0.0f) nota = 0.0f;
-}
+//void jogador::ajusteconhecimento(float delta) {
+//    conhecimento += delta;
+//    if (conhecimento > 10.0f) conhecimento = 10.0f;
+//    if (conhecimento < 0.0f) conhecimento = 0.0f;
+//}
 
 jogador& jogador::operator+=(const impacto& imp) {
-    energia += imp.energia;
-    if (energia > 100) energia = 100;
-    if (energia < 0) energia = 0;
+    energia = limitarValor(energia + imp.energia, 0, 100);
 
-    nota += imp.nota;
-    if (nota > 10.0f) nota = 10.0f;
-    if (nota < 0.0f) nota = 0.0f;
+    conhecimento = limitarValor(conhecimento + imp.conhecimento, 0.0f, 20.0f);
 
     return *this;
-} // facilitador na hora da impressão da nota
+} // facilitador na hora da impressão da conhecimento
 
 std::ostream& operator<<(std::ostream& os, const jogador& j) {
     os << TerminalUI::negri << TerminalUI::blue
-       << "+------------------------------------------------------------------+\n"
+       << "++\n"
        << "| ESTUDANTE: " << std::left << std::setw(18) << j.nome
-       << " | NOTA: " << std::fixed << std::setprecision(1) << j.nota
-       << "+------------------------------------------------------------------+\n"
+       << "| CONHECIMENTO: " << std::fixed << std::setprecision(1) << j.conhecimento
+       << "++\n"
        << TerminalUI::reset
        << "  ENERGIA: " << TerminalUI::barraProgresso(j.energia)
        << TerminalUI::blue
-       << "+------------------------------------------------------------------+\n"
+       << " ++\n"
        << TerminalUI::reset;
     return os;
 } // operator para dados do jogador

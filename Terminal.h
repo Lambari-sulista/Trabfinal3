@@ -5,8 +5,15 @@
 
 struct impacto {
     int energia = 0;
-    float nota = 0.0f;
+    float conhecimento = 0.0f;
 };
+
+template <typename T>
+T limitarValor(T valor, T minimo, T maximo) {
+    if (valor < minimo) return minimo;
+    if (valor > maximo) return maximo;
+    return valor;
+}
 
 class TerminalUI {
 public:
@@ -21,12 +28,14 @@ public:
     static constexpr const char* yellow = "\033[33m";
     static constexpr const char* blue   = "\033[34m";
     static constexpr const char* white  = "\033[37m";
+    static constexpr const char* magenta = "\033[35m";
+    static constexpr const char* cyan    = "\033[36m";
 
     // Cores de fundo
     static constexpr const char* bk_black = "\033[40m";
     static constexpr const char* bk_white = "\033[47m";
 
-    // Limpa a tela usando apenas sequências ANSI padrão (funciona nativamente em Linux, macOS e VS Code)
+    // Limpa a tela 
     static void Limpar() {
         std::cout << "\033[2J\033[3J\033[1;1H" << std::flush;
     }
@@ -59,6 +68,22 @@ public:
         };
 
         formatar("Energia", static_cast<float>(imp.energia), "%");
-        formatar("Nota", imp.nota, " pts");
+        formatar("conhecimento", imp.conhecimento, " pts");
     }
+    static void imprimirRGB(const std::string& texto) {
+    const char* cores[] = { red, yellow, green, cyan, blue, magenta };
+    size_t numCores = 6;
+    size_t corIdx = 0;
+
+    std::cout << negri;
+    for (char c : texto) {
+        if (c != ' ' && c != '\n') {
+            std::cout << cores[corIdx % numCores] << c;
+            corIdx++;
+        } else {
+            std::cout << c;
+        }
+    }
+    std::cout << reset;
+}
 };

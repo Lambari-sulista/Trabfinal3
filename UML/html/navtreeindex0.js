@@ -1,0 +1,25 @@
+var NAVTREEINDEX0 =
+{
+"_no_evento_8h_source.html":[1,0,1],
+"_terminal_8h_source.html":[1,0,2],
+"annotated.html":[0,0],
+"class_no_decisao.html":[0,0,4],
+"class_no_evento.html":[0,0,5],
+"class_no_final.html":[0,0,6],
+"class_no_imprevisto.html":[0,0,7],
+"class_perfil_exemplar.html":[0,0,9],
+"class_perfil_jubilo.html":[0,0,10],
+"class_perfil_sobrevivente.html":[0,0,11],
+"class_terminal_u_i.html":[0,0,12],
+"classclassificacao.html":[0,0,0],
+"classes.html":[0,1],
+"classhistorico.html":[0,0,1],
+"classjogador.html":[0,0,3],
+"files.html":[1,0],
+"hierarchy.html":[0,2],
+"index.html":[],
+"main_8h_source.html":[1,0,0],
+"pages.html":[],
+"struct_opcao.html":[0,0,8],
+"structimpacto.html":[0,0,2]
+};

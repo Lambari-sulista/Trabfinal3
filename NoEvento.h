@@ -18,14 +18,17 @@ class NoEvento{
         std::string descricao;
         std::vector<Opcao> opcoes;
 
+        NoEvento(const NoEvento&);
+        NoEvento& operator=(const NoEvento&);
+        void executarEasterEgg(jogador& j) const;
     public:
+        
         NoEvento(std::string tit, std::string des);
-        virtual ~NoEvento() = default;
+        virtual ~NoEvento();
 
         void addOpcao(std::string texto,std::string resultado, impacto imp, NoEvento* destino);
 
         virtual NoEvento* exe(jogador& j) const = 0;
-        //regra dos 3 poo
         virtual NoEvento* clonar() const = 0;
 
     protected:
