@@ -18,7 +18,7 @@ void jogador::registroDecisao(const std::string& decisoes){
 jogador& jogador::operator+=(const impacto& imp) {
     energia = limitarValor(energia + imp.energia, 0, 100);
 
-    conhecimento = limitarValor(conhecimento + imp.conhecimento, 0.0f, 50.0f);
+    conhecimento = limitarValor(conhecimento + imp.conhecimento, 0.0f, 10.0f);
 
     return *this;
 } // facilitador na hora da impressão do conhecimento

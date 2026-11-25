@@ -3,8 +3,10 @@
 #include <vector> 
 #include "main.h"
 
-class NoEvento;
 
+//definição de classe de evento, que é a base para os eventos do jogo
+class NoEvento;
+//estrutura de uma opcao de escolha, que contem o texto da escolha, o resultado da escolha, o impacto da escolha e o proximo no a ser chamado
 struct Opcao {
     std::string texto;
     std::string textoResultado;
@@ -54,7 +56,7 @@ class NoImprevisto : public NoEvento {
         NoEvento* clonar() const override { return new NoImprevisto(*this); }
        
 };
-
+//no folha, que é o final do jogo
 class NoFinal : public NoEvento {
     public:
 

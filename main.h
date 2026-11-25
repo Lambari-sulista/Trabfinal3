@@ -100,9 +100,9 @@ public:
 inline classificacao* classificacao::avaliarcaoJ(const jogador& j) {
     
 
-    if (j.getEnergia() <= 0 || j.getNota() < 12.0f) {
+    if (j.getEnergia() <= 0 || j.getNota() < 8.0f) {
         return new PerfilJubilo();
-    } else if (j.getNota() >= 18.0f) {
+    } else if (j.getNota() >= 8.0f) {
         return new PerfilExemplar();
     } else {
         return new PerfilSobrevivente();

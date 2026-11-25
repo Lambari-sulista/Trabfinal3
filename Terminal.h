@@ -3,18 +3,19 @@
 #include <iostream>
 #include <string>
 
+//variaveis de impacto de energia e conhecimento
 struct impacto {
     int energia = 0;
     float conhecimento = 0.0f;
 };
-
+//template para limitar valores de energia e conhecimento dentro de um intervalo
 template <typename T>
 T limitarValor(T valor, T minimo, T maximo) {
     if (valor < minimo) return minimo;
     if (valor > maximo) return maximo;
     return valor;
 }
-
+// Classe utilitária para manipulação de cores e efeitos no terminal
 class TerminalUI {
 public:
     // Editor de texto (ANSI Escape Codes padrão POSIX/ISO)

@@ -31,9 +31,7 @@ int main() {
 
     jogador player(nome);
 
-    // =========================================================================
-    // 1. CRIACAO DOS NOS DA HISTORIA PRINCIPAL
-    // =========================================================================
+   // nós da historia
     auto* no3_Calourada = new NoDecisao(
         "SEMANA 1 - A CALOURADA OFICIAL",
         "A calourada oficial acontecera nessa sexta-feira, mas voce ainda nao fez a revisao de pre-calculo."
@@ -91,14 +89,15 @@ int main() {
         "As provas terminaram e o sistema academico consolidou suas notas e frequencia."
     );
 
-    // =========================================================================
+  //nós de imorevistos
+   // =========================================================================
     // 2. CRIACAO DOS NOS ALEATORIOS / IMPREVISTOS (Ramificacoes por escolha)
     // =========================================================================
     auto* noRand_Onibus = new NoImprevisto(
         "IMPREVISTO - ONIBUS LOTADO DE MANHA",
         "Voce dormiu demais depois da festa e pegou o onibus no horario de pico para a aula das 7h30!",
         "O transito travou na avenida e voce chegou exausto!",
-        {-5, 0.0f}
+        {-10, -0.2f}
     );
 
     auto* noRand1_RU = new NoImprevisto(
@@ -119,14 +118,14 @@ int main() {
         "IMPREVISTO - CURTO-CIRCUITO NA OFICINA",
         "Na sua primeira semana na equipe de competicao, uma placa queimou bem antes da apresentacao interna!",
         "Voce ficou ate tarde ajudando a soldar os componentes reservas!",
-        {-10, +0.5f}
+        {-10, +0.3f}
     );
 
     auto* noRand_Fome = new NoImprevisto(
         "IMPREVISTO - ESTOMAGO RONCANDO NA AULA",
         "Como voce pulou o almoco para ir na monitoria, sua pressao caiu no meio da aula da tarde!",
         "Voce mal conseguia prestar atencao no quadro de tanta fome!",
-        {-10, -0.5f}
+        {-10, -0.2f}
     );
 
     auto* noRand_Virose = new NoImprevisto(
@@ -150,7 +149,6 @@ int main() {
         {-10, 0.0f}
     );
 
-
     // Vetor com TODOS os nos para liberacao de memoria no final
     std::vector<NoEvento*> arvore = {
         no3_Calourada, no4_Listas, no5_Equipe, no_Monitoria, no_P1Calculo,
@@ -160,151 +158,151 @@ int main() {
     };
 
     // =========================================================================
-    // 3. CONEXOES {Energia, Nota} - Cada escolha leva a caminhos distintos
+    // 3. CONEXOES {Energia, Conhecimento} - Escala balanceada (0.0 a 10.0)
     // =========================================================================
 
     // SEMANA 1 - CALOURADA
     no3_Calourada->addOpcao(
         "Estudar sozinho",
         "Voce revisou funcoes e trigonometria em silencio no quarto. Comecou o semestre com a base solida.",
-        {-15, +3.5f},
+        {-15, +1.2f},
         no4_Listas
     );
     no3_Calourada->addOpcao(
         "Estudar com novos amigos",
         "Voce revisou a materia e ainda formou um grupo de estudos para o resto do semestre!",
-        {-10, +1.0f},
+        {-10, +0.9f},
         no4_Listas
     );
     no3_Calourada->addOpcao(
         "Nao estudar e ir para a calourada",
         "A festa foi epica e voce conheceu metade do campus, mas perdeu o ritmo inicial.",
-        {-25, -0.5f},
+        {-20, -0.3f},
         noRand_Onibus 
     );
 
     noRand_Onibus->addOpcao(
         "Correr do ponto ate o bloco",
         "Voce chegou ofegante na sala, mas conseguiu assinar a lista de presenca.",
-        {-10, +0.5f},
+        {-10, +0.3f},
         no4_Listas
     );
     noRand_Onibus->addOpcao(
         "Ir andando devagar e tomar um cafe no caminho",
         "Voce perdeu os primeiros 20 minutos de aula, mas nao se desgastou mais.",
-        {+5, -0.5f},
+        {+5, -0.2f},
         no4_Listas
     );
 
-    // SEMANA 3 - LISTAS
+    // SEMANA 2 - LISTAS
     no4_Listas->addOpcao(
         "Fazer toda a lista de limites",
         "40 exercicios depois, voce domina indeterminacoes, mas sua mao e cerebro pedem socorro.",
-        {-25, +2.0f},
+        {-20, +1.2f},
         noRand2_DorCabeca 
     );
     no4_Listas->addOpcao(
         "Fazer o trabalho de Programacao",
         "Seu codigo compilou de primeira sem vazamento de memoria! O professor elogiou a logica.",
-        {-20, +2.0f},
+        {-15, +1.1f},
         no5_Equipe 
     );
     no4_Listas->addOpcao(
         "Se enturmar com a galera no Bloco C",
         "Voce jogou conversa fora, pegou dicas de veteranos sobre os professores e tomou um cafe.",
-        {+5, +0.5f},
+        {+10, +0.3f},
         noRand1_RU 
     );
     no4_Listas->addOpcao(
         "Tirar o dia para descansar",
         "Voce dormiu a tarde inteira e recuperou o folego, embora as listas continuem acumuladas.",
-        {+25, -0.5f},
+        {+25, -0.3f},
         no5_Equipe 
     );
 
     noRand1_RU->addOpcao(
         "Almocar na pressa e se atrasar para a aula",
         "Voce comeu rapido demais e chegou 15 minutos atrasado, pegando a explicacao pela metade.",
-        {+10, +0.5f},
+        {+10, +0.3f},
         no5_Equipe
     );
     noRand1_RU->addOpcao(
         "Pular o almoco e ir para a aula",
         "Voce assistiu a aula inteira e anotou tudo, mas seu estomago roncou ate o fim do turno.",
-        {-20, +1.5f},
+        {-15, +0.7f},
         no5_Equipe
     );
     noRand1_RU->addOpcao(
         "Pular a aula e almocar com calma",
         "Voce fez uma refeicao tranquila enquanto via a chuva cair, mas perdeu materia nova.",
-        {+15, -1.0f},
+        {+15, -0.4f},
         no5_Equipe
     );
 
     noRand2_DorCabeca->addOpcao(
         "Ir para a aula mesmo com dor de cabeca",
         "Foi dificil concentrar no quadro, mas voce garantiu a presenca e copiou os exemplos da prova.",
-        {-20, +1.0f},
+        {-15, +0.5f},
         no5_Equipe
     );
     noRand2_DorCabeca->addOpcao(
         "Ir para casa e descansar",
         "Voce apagou na cama e acordou zerado no dia seguinte, pronto para a reta final.",
-        {+30, -0.5f},
+        {+30, -0.2f},
         no5_Equipe
     );
 
-    // SEMANA 6 - EQUIPES DE COMPETICAO
+    // SEMANA 3 - EQUIPES DE COMPETICAO
     no5_Equipe->addOpcao(
         "Se dedicar somente aos estudos por enquanto",
         "Voce manteve o foco total nas disciplinas obrigatorias e garantiu boas notas nas provas parciais.",
-        {-10, +2.0f},
+        {-10, +1.0f},
         no_Monitoria 
     );
     no5_Equipe->addOpcao(
         "Se inscrever para a equipe de competicao",
         "Voce passou na selecao! Aprendeu muito na pratica na oficina, embora o tempo livre tenha sumido.",
-        {-25, +1.0f},
+        {-20, +0.6f},
         noRand_Oficina 
     );
 
     noRand_Oficina->addOpcao(
         "Ficar para ajudar a resolver o problema",
         "Os veteranos elogiaram sua dedicacao e voce aprendeu a usar o osciloscopio na marra!",
-        {-15, +1.0f},
+        {-10, +0.6f},
         no_Monitoria
     );
     noRand_Oficina->addOpcao(
         "Voltar para casa para nao perder a aula do dia seguinte",
         "Voce priorizou suas disciplinas e conseguiu dormir no horario.",
-        {+10, 0.0f},
+        {+10, +0.2f},
         no_Monitoria
     );
 
-    // SEMANA 7 - CONSULTA COM O MONITOR
+    // SEMANA 4 - CONSULTA COM O MONITOR
     no_Monitoria->addOpcao(
         "Ir direto para a monitoria e pular o almoco",
         "Voce tirou todas as duvidas com o veterano, mas saiu da sala com o estomago roncando.",
-        {-20, +1.5f},
-        noRand_Fome // Ramifica para imprevisto de fome na aula da tarde
+        {-15, +0.9f},
+        noRand_Fome
     );
     no_Monitoria->addOpcao(
         "Almocar rapido no RU e pegar os ultimos 20 minutos",
         "Voce resolveu a duvida principal e ainda conseguiu comer antes da proxima aula.",
-        {-5, +1.0f},
-        no_P1Calculo // Segue direto para P1
+        {-5, +0.7f},
+        no_P1Calculo
     );
     no_Monitoria->addOpcao(
         "Ignorar a monitoria e estudar por videoaulas em casa",
         "Voce evitou a correria no campus, mas demorou o dobro do tempo para entender a materia.",
-        {-10, +0.5f},
-        no_P1Calculo // Segue direto para P1
+        {-10, +0.4f},
+        no_P1Calculo
     );
 
     noRand_Fome->addOpcao(
         "Comprar um salgado na cantina no intervalo",
         "Recuperou as forcas a tempo de copiar a revisao final para a P1.",
-        {+15, +0.5f},
+        {+15, +0.3f},
         no_P1Calculo
     );
     noRand_Fome->addOpcao(
@@ -314,77 +312,77 @@ int main() {
         no_P1Calculo
     );
 
-    // SEMANA 8 - PRIMEIRA PROVA DE CALCULO 1 (P1)
+    // SEMANA 5 - PRIMEIRA PROVA DE CALCULO 1 (P1)
     no_P1Calculo->addOpcao(
         "Dar o sangue e revisar cada passo algebrico ate o fim",
         "No dia seguinte voce evitou erros bobos de sinal e fechou as questoes principais, mas saiu mentalmente esgotado.",
-        {-30, +2.5f},
+        {-25, +1.4f},
         noRand_Virose 
     );
     no_P1Calculo->addOpcao(
         "Revisar o essencial e dormir bem para a prova",
         "Estrategia segura: voce confiou no seu preparo, fez uma boa prova e preservou o psicologico para o resto da semana.",
-        {-10, +1.5f},
+        {-10, +1.0f},
         no_Feriado 
     );
     no_P1Calculo->addOpcao(
-        "Apenas tem uma boa noite de sono",
-        "Voce até entrega a prova antes do tempo acabar, mas deixou passar detalhes importantes.",
-        {+5, 0.0f},
-        no_Feriado // Segue direto para o feriado
+        "Apenas ter uma boa noite de sono",
+        "Voce ate entrega a prova antes do tempo acabar, mas deixou passar detalhes importantes.",
+        {+10, +0.2f},
+        no_Feriado
     );
 
     noRand_Virose->addOpcao(
         "Tomar um cha, remedio e dormir cedo",
         "Voce cortou o mal pela raiz e chegou inteiro para aproveitar o feriado.",
-        {+20, 0.0f},
+        {+25, 0.0f},
         no_Feriado
     );
     noRand_Virose->addOpcao(
         "Ignorar os sintomas e continuar estudando",
         "Voce avancou na materia de Programacao, mas arrastou o cansaco por dias.",
-        {-15, +1.0f},
+        {-15, +0.5f},
         no_Feriado
     );
 
-    // SEMANA 9 - FERIADAO PROLONGADO
+    // SEMANA 6 - FERIADAO PROLONGADO
     no_Feriado->addOpcao(
         "Ficar estudando e colocar toda a materia em dia",
         "Zero vida social no feriado, mas voce voltou para as aulas com tudo em dia.",
-        {-20, +2.0f},
-        no6_DiaLivre // Segue direto
+        {-15, +1.1f},
+        no6_DiaLivre
     );
     no_Feriado->addOpcao(
         "Viajar para visitar a familia e desligar da faculdade",
         "Voce recuperou totalmente as energias, mesmo sem abrir um caderno nos quatro dias.",
-        {+35, -0.5f},
-        noRand_TransitoFeriado // Ramifica para imprevisto na volta da viagem
+        {+35, -0.3f},
+        noRand_TransitoFeriado
     );
     no_Feriado->addOpcao(
         "Dividir o tempo entre descanso e revisao leve",
         "Voce organizou seus resumos pela manha e aproveitou as tardes para descansar.",
-        {+15, +1.0f},
-        no6_DiaLivre // Segue direto
+        {+15, +0.6f},
+        no6_DiaLivre
     );
 
     noRand_TransitoFeriado->addOpcao(
         "Revisar os slides no celular dentro do onibus",
         "Aproveitou o tempo parado no transito para relembrar os conceitos da semana.",
-        {-5, +7.5f},
+        {-5, +0.6f},
         no6_DiaLivre
     );
     noRand_TransitoFeriado->addOpcao(
         "Colocar fones de ouvido e tirar um cochilo",
         "Chegou descansado apesar do atraso na estrada.",
-        {+10, 0.0f},
+        {+15, 0.0f},
         no6_DiaLivre
     );
 
-    // SEMANA 11 - UM RARO DIA LIVRE
+    // SEMANA 7 - UM RARO DIA LIVRE
     no6_DiaLivre->addOpcao(
         "Estudar para as provas futuras",
         "Voce transformou o dia livre em uma maratona de revisao e resumiu toda a materia.",
-        {-20, +2.0f},
+        {-15, +1.0f},
         no67_PrazoFinal 
     );
     no6_DiaLivre->addOpcao(
@@ -403,70 +401,71 @@ int main() {
     noRand3_Git->addOpcao(
         "Reescrever a parte perdida com calma",
         "Deu trabalho, mas o codigo ficou ainda mais limpo e bem documentado que antes.",
-        {-15, +2.0f},
+        {-15, +0.8f},
         no67_PrazoFinal
     );
     noRand3_Git->addOpcao(
         "Fazer um workaround rapido para entregar",
         "Funcionou na base da gambiarra, economizou energia, mas o professor vai notar.",
-        {-5, -0.5f},
+        {-5, -0.3f},
         no67_PrazoFinal
     );
 
-    // SEMANA 13 - ENTREGA AS 23:59
+    // SEMANA 8 - ENTREGA AS 23:59
     no67_PrazoFinal->addOpcao(
         "E o vibe e o codas",
         "Voce enviou o arquivo as 23:58! O codigo rodou, mas voce nao aprendeu muita coisa.",
-        {+5, +2.0f},
+        {+5, +0.4f},
         no_P2Calculo 
     );
     no67_PrazoFinal->addOpcao(
         "E la vamos nos... (fazer o possivel ate dar o horario e ir dormir)",
         "Voce entregou o projeto completo a custo da sua energia.",
-        {-10, +2.0f},
+        {-15, +1.0f},
         no_P2Calculo 
     );
 
-    // SEMANA 14 - P2 DE CALCULO 1
+    // SEMANA 9 - P2 DE CALCULO 1
     no_P2Calculo->addOpcao(
         "Virar a noite fazendo integrais a base de cafe",
         "Voce chegou sabendo resolver qualquer substituicao trigonometrica, mas quase dormindo na carteira.",
-        {-30, +3.5f},
+        {-25, +1.5f},
         noFinal_Boletim
     );
     no_P2Calculo->addOpcao(
         "Estudar questoes de maior dificuldade e gerenciar o tempo para nao se desgastar",
         "Voce manteve a cabeca fria e garantiu uma otima pontuacao sem se destruir.",
-        {-15, +4.0f},
+        {-15, +1.2f},
         noFinal_Boletim
     );
     no_P2Calculo->addOpcao(
         "Chutar os metodos de integracao e sair na metade da prova",
-        "Voce desistiu antes mesmo da prova ter começado para ir descansar e esquecer a materia.",
-        {+10, -1.0f},
+        "Voce desistiu antes mesmo da prova ter comecado para ir descansar e esquecer a materia.",
+        {+10, -0.8f},
         noFinal_Boletim
     );
 
-    // LOOP PRINCIPAL, a unica parte que importa da main ta aqui
-    NoEvento* noAtual = no3_Calourada;
-
+    // =========================================================================
+    // LOOP PRINCIPAL (Sem sombreamento de variavel e com replay no final)
+    // =========================================================================
     bool jogarNovamente = false;
-    do{ 
+    do { 
         player = jogador(nome);
         NoEvento* noAtual = no3_Calourada;
 
-    while (noAtual != nullptr) {
-        TerminalUI::Limpar();
-        std::cout << player << "\n";
+        while (noAtual != nullptr) {
+            TerminalUI::Limpar();
+            std::cout << player << "\n";
 
-        noAtual = noAtual->exe(player);
+            noAtual = noAtual->exe(player);
 
-        if (noAtual != nullptr) {
+            if (noAtual != nullptr) {
+                TerminalUI::pausar();
+            }
+        }
+
+        if (player.getEnergia() <= 0) {
             TerminalUI::pausar();
-        }
-        }
-    if(player.getEnergia() <= 0) {
-       TerminalUI::pausar(); // Pausa para ler o resultado da ultima acao antes de limpar
             TerminalUI::Limpar();
             std::cout << player << "\n";
 
@@ -477,22 +476,22 @@ int main() {
                       << TerminalUI::reset
                       << "\nSua energia chegou a 0%! Voce levou seu corpo e mente ao limite,\n"
                       << "precisou trancar as disciplinas para cuidar da saude e nao concluiu o semestre.\n";
-            std::string resposta;
-            std::cout << TerminalUI::negri << TerminalUI::blue
-                      << "\nDeseja jogar novamente? (s/n): "
-                      << TerminalUI::reset
-                      << std::flush;
-            std::getline(std::cin, resposta);
+        }
 
-            jogarNovamente = (!resposta.empty() && (resposta[0] == 's' || resposta[0] == 'S'));
-        } 
-      }  while (jogarNovamente);
+        std::string resposta;
+        std::cout << TerminalUI::negri << TerminalUI::blue
+                  << "\nDeseja jogar novamente? (s/n): "
+                  << TerminalUI::reset
+                  << std::flush;
+        std::getline(std::cin, resposta);
+
+        jogarNovamente = (!resposta.empty() && (resposta[0] == 's' || resposta[0] == 'S'));
+    } while (jogarNovamente);
 
     for (NoEvento* no : arvore) {
         delete no;
-    } 
+    }
 
-   
     return 0;
-    
-}  
+
+}
